@@ -9,6 +9,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Product implements Serializable{
@@ -21,6 +24,11 @@ public class Product implements Serializable{
 	private String name;
 	private Double price;
 	
+	@ManyToMany
+	@JoinTable(name = "PRODUTO_CATEGORIA",
+		joinColumns = @JoinColumn(name = "categoria_id"),
+		inverseJoinColumns = @JoinColumn(name = "categoria_id")
+	)
 	private List<Category> categories = new ArrayList<>(); // vários produtos
 	
 	public Product() {
