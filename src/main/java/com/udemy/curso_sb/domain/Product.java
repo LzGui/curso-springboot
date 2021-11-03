@@ -25,11 +25,11 @@ public class Product implements Serializable{
 	private Double price;
 	
 	@ManyToMany
-	@JoinTable(name = "PRODUTO_CATEGORIA",
-		joinColumns = @JoinColumn(name = "categoria_id"),
-		inverseJoinColumns = @JoinColumn(name = "categoria_id")
-	)
-	private List<Category> categories = new ArrayList<>(); // vários produtos
+    @JoinTable(name = "PRODUTO_CATEGORIA",
+       joinColumns = @JoinColumn(name = "produto_id"),
+       inverseJoinColumns = @JoinColumn(name = "categoria_id")
+    )
+	private List<Category> categorias = new ArrayList<>(); // vários produtos
 	
 	public Product() {
 		
@@ -67,11 +67,11 @@ public class Product implements Serializable{
 	}
 
 	public List<Category> getCategories() {
-		return categories;
+		return categorias;
 	}
 
 	public void setCategories(List<Category> categories) {
-		this.categories = categories;
+		this.categorias = categories;
 	}
 
 	@Override
